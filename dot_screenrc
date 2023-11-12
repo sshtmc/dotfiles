@@ -1,0 +1,33 @@
+# First of all, I really don't like C-a to be my key combination, since
+# I use it a lot to get the same effect as the `Home' key. So, I choose
+# C-\ as my preferred shortcut key by adding this line to my ~/.screenrc.
+
+#escape \034\034
+#escape ^Zz
+#escape ^ww
+
+# (If you are wondering, \034 is the key sequence C-\ in octal. Please
+# read the documentation for `escape' in the screen man page to find out
+# how I arrived at that).
+
+# Prefer an audible bell to the visual one.
+vbell off
+
+# Skip the startup message
+startup_message off
+
+# Display a caption string below, appearing like tabs and
+# displaying the window number and application name (by default).
+caption always # activates window caption
+caption string '%{= wk}[ %{k}%H %{k}][%= %{= wk}%?%-Lw%?%{r}(%{r}%n*%f%t%?(%u)%?%{r})%{k}%?%+Lw%?%?%= %{k}][%{b} %d/%m %{k}%c %{k}]' # good looking window bar
+ 
+bindkey -k k2 screen # F2 for new screen
+bindkey -k k3 prev # F3 for previous window
+bindkey -k k4 next # F4 for next window
+
+# Special keys. C-a m will spawn Mutt, for example, on window 7 (if it
+# is available), or the next available window.
+termcapinfo xterm* ti@:te@
+
+defscrollback 5000
+
