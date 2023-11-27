@@ -1,5 +1,9 @@
+.trunk
+.pixi
 README.md
 LICENSE
+pixi.lock
+pixi.toml
 {{- if ne .chezmoi.hostname "work-laptop" }}
 .work # only manage .work on work-laptop
 {{- end }}

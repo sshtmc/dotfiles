@@ -1,0 +1,29 @@
+[project]
+name = "dotenv"
+version = "0.1.0"
+description = "My dotenv."
+authors = ["Saša Tomić <sasa.git@kalaj.org>"]
+channels = ["conda-forge"]
+platforms = ["linux-64"]
+
+
+[tasks]
+# starship ==> very nice cross-shell prompt https://starship.rs/
+install-starship = "curl -sS https://starship.rs/install.sh | sh; grep -q 'starship init bash' $HOME/.bashrc || echo 'eval \"$(starship init bash)\"' >> $HOME/.bashrc"
+
+# dotfiles manager ==> https://chezmoi.io/
+install-chezmoi = "sh -c \"$(curl -fsLS get.chezmoi.io)\" -- -b $HOME/.local/bin"
+
+# neovim ==> https://neovim.io/
+install-neovim = "sudo add-apt-repository ppa:neovim-ppa/unstable && sudo apt update && sudo apt install neovim"
+
+# poetry ==> https://python-poetry.org/
+install-poetry = "pixi global install poetry"
+
+# install all global tools
+install-all = { cmd = "echo \"done!\"", depends_on = ["install-starship", "install-chezmoi", "install-neovim", "install-poetry"] }
+
+
+[dependencies]
+python = "==3.11"
+rust = "==1.71.1"
